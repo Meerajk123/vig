@@ -1,0 +1,27 @@
+pt=input("Enter plaintext").lower()
+key=input("Enter Key").lower()
+
+pt = [ord(a)-97 for a in pt]
+key = [ord(b)-97 for b in key]
+i=0
+print(pt)
+print(key)
+while(len(key)!=len(pt)):
+  key.append(key[i])
+  i+=1
+  if(i==len(key)):
+    i=0
+enc=[]
+print("Encrypted text is:")
+for i,j in zip(pt,key):
+  res=(i+j)%26
+  enc.append(res)
+  
+  print(chr(res+97),end=" ")
+
+# Di = (Ei - Ki + 26) mod 26
+print("Decrypted text is:")
+for i,j in zip(enc,key):
+  res1=(i-j+26)%26
+  
+  print(chr(res1+97),end=" ")
